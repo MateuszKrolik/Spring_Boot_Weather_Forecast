@@ -24,39 +24,46 @@ public class ForecastController {
         this.forecastService = forecastService;
     }
 
-    @GetMapping("/forecasts/{city}")
+    @GetMapping(value = "/forecasts/{city}", produces = { "application/json",
+    "application/xml" })
     public Mono<ForecastResponse> getForecastForSpecificCity(@PathVariable String city) {
         return forecastService.getForecastForCity(city).onErrorResume(
                 e -> Mono.error(new ResponseStatusException(HttpStatus.NOT_FOUND, "Invalid city name provided.")));
     }
 
-    @GetMapping("/forecasts")
+    @GetMapping(value = "/forecasts", produces = { "application/json",
+    "application/xml" })
     public Flux<ForecastResponse> getForecastsForFiveBiggestPolishCities() {
         return Flux.just("Warsaw", "Lodz", "Krakow", "Wroclaw", "Poznan")
                 .flatMap(city -> forecastService.getForecastForCity(city));
     }
 
-    @GetMapping("/forecasts/Warsaw")
+    @GetMapping(value = "/forecasts/Warsaw", produces = { "application/json",
+    "application/xml" })
     public Mono<ForecastResponse> getForecastForWarsaw() {
         return forecastService.getForecastForCity("Warsaw");
     }
 
-    @GetMapping("/forecasts/Lodz")
+    @GetMapping(value = "/forecasts/Lodz", produces = { "application/json",
+    "application/xml" })
     public Mono<ForecastResponse> getForecastForLodz() {
         return forecastService.getForecastForCity("Lodz");
     }
 
-    @GetMapping("/forecasts/Krakow")
+    @GetMapping(value = "/forecasts/Krakow", produces = { "application/json",
+    "application/xml" })
     public Mono<ForecastResponse> getForecastForKrakow() {
         return forecastService.getForecastForCity("Krakow");
     }
 
-    @GetMapping("/forecasts/Wroclaw")
+    @GetMapping(value = "/forecasts/Wroclaw", produces = { "application/json",
+    "application/xml" })
     public Mono<ForecastResponse> getForecastForWroclaw() {
         return forecastService.getForecastForCity("Wroclaw");
     }
 
-    @GetMapping("/forecasts/Poznan")
+    @GetMapping(value = "/forecasts/Poznan", produces = { "application/json",
+    "application/xml" })
     public Mono<ForecastResponse> getForecastForPoznan() {
         return forecastService.getForecastForCity("Poznan");
     }

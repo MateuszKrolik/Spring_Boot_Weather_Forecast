@@ -40,11 +40,11 @@
 			<version>2.5.0</version>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/io.github.cdimascio/java-dotenv -->
-		<dependency>
+		<!-- <dependency>
 			<groupId>io.github.cdimascio</groupId>
 			<artifactId>java-dotenv</artifactId>
 			<version>5.2.2</version>
-		</dependency>
+		</dependency> -->
 		<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-webflux -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -69,6 +69,13 @@
 			<artifactId>spring-data-rest-hal-explorer</artifactId>
 			<version>4.3.0</version>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/io.netty/netty-resolver-dns-native-macos -->
+		<!-- <dependency>
+			<groupId>io.netty</groupId>
+			<artifactId>netty-resolver-dns-native-macos</artifactId>
+			<version>4.1.111.Final</version>
+			<scope>runtime</scope>
+		</dependency> -->
 	</dependencies>
 
 	<build>

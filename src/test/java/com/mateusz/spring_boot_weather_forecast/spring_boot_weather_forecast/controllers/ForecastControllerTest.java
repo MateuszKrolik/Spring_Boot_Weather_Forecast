@@ -54,24 +54,24 @@ public class ForecastControllerTest {
     @ValueSource(strings = { "/v1/forecasts/Warsaw", "/v1/forecasts/Lodz", "/v1/forecasts/Krakow",
             "/v1/forecasts/Wroclaw", "/v1/forecasts/Poznan" })
     void testCitySpecificEndpoints(String uri) {
-        Mockito.when(forecastService.getForecastForCity(Mockito.anyString())).thenReturn(Mono.just(mockResponse));
+        Mockito.when(forecastService.getForecastForCity(Mockito.anyString())).thenReturn(Mono.just(mockResponse)); // Stub
 
         webTestClient.get().uri(uri)
-                .accept(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML) 
                 .exchange()
-                .expectStatus().isOk()
-                .expectBody(ForecastResponse.class).isEqualTo(mockResponse);
+                .expectStatus().isOk() // Assertion
+                .expectBody(ForecastResponse.class).isEqualTo(mockResponse); // Assertion
     }
 
     @ParameterizedTest
     @ValueSource(strings = { "/v1/forecasts" })
     void testGetForecastsForFiveBiggestPolishCities(String uri) {
-        Mockito.when(forecastService.getForecastForCity(Mockito.anyString())).thenReturn(Mono.just(mockResponse));
+        Mockito.when(forecastService.getForecastForCity(Mockito.anyString())).thenReturn(Mono.just(mockResponse)); // Stub
 
         webTestClient.get().uri(uri)
-                .accept(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML) 
                 .exchange()
-                .expectStatus().isOk()
-                .expectBodyList(ForecastResponse.class).hasSize(5);
+                .expectStatus().isOk() // Assertion
+                .expectBodyList(ForecastResponse.class).hasSize(5); // Assertion
     }
 }
