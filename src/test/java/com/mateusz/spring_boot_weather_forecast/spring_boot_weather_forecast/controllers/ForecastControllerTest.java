@@ -4,7 +4,7 @@ import com.mateusz.spring_boot_weather_forecast.spring_boot_weather_forecast.DTO
 import com.mateusz.spring_boot_weather_forecast.spring_boot_weather_forecast.DTO.ForecastResponse.Day;
 import com.mateusz.spring_boot_weather_forecast.spring_boot_weather_forecast.DTO.ForecastResponse.Forecast;
 import com.mateusz.spring_boot_weather_forecast.spring_boot_weather_forecast.DTO.ForecastResponse.ForecastDay;
-import com.mateusz.spring_boot_weather_forecast.spring_boot_weather_forecast.services.ForecastService;
+import com.mateusz.spring_boot_weather_forecast.spring_boot_weather_forecast.services.ForecastServiceImpl;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -28,22 +28,22 @@ public class ForecastControllerTest {
     private WebTestClient webTestClient;
 
     @MockBean
-    private ForecastService forecastService;
+    private ForecastServiceImpl forecastService;
 
     private ForecastResponse mockResponse;
 
     @BeforeEach
     public void setup() {
         Day day = new Day(
-                BigDecimal.valueOf(20.0), // maxtemp_c
-                BigDecimal.valueOf(10.0), // mintemp_c
-                BigDecimal.valueOf(15.0), // avgtemp_c
-                BigDecimal.valueOf(10.0), // maxwind_kph
-                BigDecimal.valueOf(0.0), // totalprecip_mm
-                BigDecimal.valueOf(0.0), // totalsnow_cm
-                BigDecimal.valueOf(70.0), // avghumidity
-                BigDecimal.valueOf(10.0), // avgvis_km
-                BigDecimal.valueOf(5.0) // uv
+                BigDecimal.valueOf(20.0), 
+                BigDecimal.valueOf(10.0), 
+                BigDecimal.valueOf(15.0), 
+                BigDecimal.valueOf(10.0), 
+                BigDecimal.valueOf(0.0), 
+                BigDecimal.valueOf(0.0), 
+                BigDecimal.valueOf(70.0), 
+                BigDecimal.valueOf(10.0), 
+                BigDecimal.valueOf(5.0) 
         );
         ForecastDay forecastDay = new ForecastDay(LocalDate.now(), day);
         Forecast forecast = new Forecast(List.of(forecastDay));

@@ -45,7 +45,7 @@ steps:
         '--port',
         '8080',
         '--set-secrets',
-        'WEATHER_API_KEY=WEATHER_API_KEY:latest',
+        'WEATHER_API_KEY=WEATHER_API_KEY:latest,WEATHER_API_BASE_URL=WEATHER_API_BASE_URL:latest,WEATHER_API_PATH=WEATHER_API_PATH:latest',
       ]
 
 images:
